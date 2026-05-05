@@ -137,10 +137,17 @@
   }
   .numbers-halves {
     display: grid;
-    grid-template-columns: 1fr 1px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0;
   }
-  .num-divider { background: #e8e8e8; margin: 0 28px; }
+  .num-half-left {
+    padding-right: 28px;
+    border-right: 2px solid #5e5ce6;
+    border-image: linear-gradient(180deg, #5e5ce6 0%, #0a84ff 100%) 1;
+  }
+  .num-half-right {
+    padding-left: 28px;
+  }
   .num-month { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 18px; }
   .num-cols {
     display: grid;
@@ -165,8 +172,133 @@
   }
 
   .num-yoy { font-size: 11.5px; font-weight: 600; color: #1a7a35; }
+  .num-row-divider {
+    border: none;
+    border-top: 1px solid #e8e8e8;
+    margin: 18px 0 16px;
+  }
+  .num-col-val.sm { font-size: 18px; }
+  .num-yoy.neutral { color: #8a8a8a; }
+  .num-yoy.red { color: #c0001a; }
 
-  /* ── PARLAY VS SGP MIX ── */
+  /* ── MIX CARD (inside pillar) ── */
+  .mix-card {
+    background: #f7f8fc;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+  .mix-card-months {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .mix-card-month-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .mix-card-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+  .mix-card-col-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    margin-bottom: 3px;
+  }
+  .mix-card-row {
+    margin-bottom: 6px;
+  }
+  .mix-card-row-label {
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .mix-card-row-label.parlay { color: #0a84ff; }
+  .mix-card-row-label.sgp { color: #ff9f0a; }
+  .mix-card-val {
+    font-size: 14px;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.3px;
+  }
+  .mix-card-divider {
+    width: 1px;
+    background: #e0e0e0;
+    margin: 0 4px;
+    align-self: stretch;
+  }
+  .mix-card-inner {
+    display: flex;
+  }
+  .mix-card-half {
+    flex: 1;
+  }
+  .mix-card-sep {
+    width: 1px;
+    background: #e0e0e0;
+    margin: 0 10px;
+  }
+
+  /* ── MARCH MADNESS HIGHLIGHT BLOCK ── */
+  .mm-block {
+    background: #fff;
+    border-radius: 16px;
+    padding: 22px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    margin-bottom: 40px;
+    border-left: 4px solid #ff9f0a;
+  }
+  .mm-block-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 6px;
+  }
+  .mm-block-sub {
+    font-size: 13px;
+    color: #3a3a3a;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .mm-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: #f7f8fc;
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .mm-stat-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    margin-bottom: 4px;
+  }
+  .mm-stat-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .mm-stat-yoy {
+    font-size: 11px;
+    font-weight: 600;
+    color: #1a7a35;
+  }
   .mix-table {
     width: 100%;
     border-collapse: collapse;
@@ -498,56 +630,84 @@
 <div class="numbers-outer">
   <div class="numbers-inner">
     <div class="numbers-halves">
-      <div>
+      <div class="num-half-left">
         <div class="num-month">March 2026</div>
         <div class="num-cols">
-          <div><div class="num-col-label">Cards Built</div><div class="num-col-val">488</div><div class="num-yoy">+25.4% YoY</div></div>
+          <div><div class="num-col-label">Total Cards</div><div class="num-col-val">488</div><div class="num-yoy">+25.4% YoY</div></div>
           <div><div class="num-col-label">Total Bets</div><div class="num-col-val">1.3M</div><div class="num-yoy">+22.9% YoY</div></div>
           <div><div class="num-col-label">Total Handle</div><div class="num-col-val">$10.9M</div><div class="num-yoy">+28.6% YoY</div></div>
           <div><div class="num-col-label">Avg Per Bet</div><div class="num-col-val">$7.88</div><div class="num-yoy">+6.2% YoY</div></div>
         </div>
+        <hr class="num-row-divider">
+        <div class="num-cols">
+          <div><div class="num-col-label">Partner Cards</div><div class="num-col-val sm">31</div><div class="num-yoy">+158.3% YoY</div></div>
+          <div><div class="num-col-label">Total Bets</div><div class="num-col-val sm">208K</div><div class="num-yoy">+708.9% YoY</div></div>
+          <div><div class="num-col-label">Total Handle</div><div class="num-col-val sm">$2.0M</div><div class="num-yoy">+800.0% YoY</div></div>
+          <div><div class="num-col-label">Avg Per Bet</div><div class="num-col-val sm">$8.52</div><div class="num-yoy">+1.7% YoY</div></div>
+        </div>
+        <hr class="num-row-divider">
+        <div class="num-cols">
+          <div><div class="num-col-label">Top 10 Cards**</div><div class="num-col-val sm">33</div><div class="num-yoy neutral">— YoY</div></div>
+          <div><div class="num-col-label">Total Bets</div><div class="num-col-val sm">389K</div><div class="num-yoy neutral">— YoY</div></div>
+          <div><div class="num-col-label">Total Handle</div><div class="num-col-val sm">$3.55M</div><div class="num-yoy neutral">— YoY</div></div>
+          <div><div class="num-col-label">Avg Per Bet</div><div class="num-col-val sm">$9.31</div><div class="num-yoy neutral">— YoY</div></div>
+        </div>
       </div>
-      <div class="num-divider"></div>
-      <div>
+      <div class="num-half-right">
         <div class="num-month">April 2026</div>
         <div class="num-cols">
-          <div><div class="num-col-label">Cards Built</div><div class="num-col-val">471</div><div class="num-yoy">+10.3% YoY</div></div>
+          <div><div class="num-col-label">Total Cards</div><div class="num-col-val">471</div><div class="num-yoy">+10.3% YoY</div></div>
           <div><div class="num-col-label">Total Bets</div><div class="num-col-val">1.1M</div><div class="num-yoy">+16.8% YoY</div></div>
           <div><div class="num-col-label">Total Handle</div><div class="num-col-val">$9.5M</div><div class="num-yoy">+23.1% YoY</div></div>
           <div><div class="num-col-label">Avg Per Bet</div><div class="num-col-val">$7.82</div><div class="num-yoy">+9.1% YoY</div></div>
+        </div>
+        <hr class="num-row-divider">
+        <div class="num-cols">
+          <div><div class="num-col-label">Partner Cards</div><div class="num-col-val sm">43</div><div class="num-yoy">+22.9% YoY</div></div>
+          <div><div class="num-col-label">Total Bets</div><div class="num-col-val sm">114K</div><div class="num-yoy">+40.6% YoY</div></div>
+          <div><div class="num-col-label">Total Handle</div><div class="num-col-val sm">$1.2M</div><div class="num-yoy">+55.8% YoY</div></div>
+          <div><div class="num-col-label">Avg Per Bet</div><div class="num-col-val sm">$8.67</div><div class="num-yoy red">−0.8% YoY</div></div>
+        </div>
+        <hr class="num-row-divider">
+        <div class="num-cols">
+          <div><div class="num-col-label">Top 10 Cards**</div><div class="num-col-val sm">31</div><div class="num-yoy red">−3.1% YoY</div></div>
+          <div><div class="num-col-label">Total Bets</div><div class="num-col-val sm">341K</div><div class="num-yoy">+31.5% YoY</div></div>
+          <div><div class="num-col-label">Total Handle</div><div class="num-col-val sm">$2.97M</div><div class="num-yoy">+33.7% YoY</div></div>
+          <div><div class="num-col-label">Avg Per Bet</div><div class="num-col-val sm">$8.91</div><div class="num-yoy">+4.6% YoY</div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="footnote" style="margin-top:-32px;">**Defined as any PPM card that ranks in the Top 10 in handle on the day of that card's event(s), covering all sports and all parlay types, 2-7 legs only</div>
 
-<!-- PARLAY VS SGP MIX -->
-<table class="mix-table">
-  <thead>
-    <tr class="mix-r1">
-      <th style="text-align:left;width:17%">Parlay vs. SGP Mix</th>
-      <th colspan="3" class="month-head sep-l sep-r">March 2026</th>
-      <th colspan="3" class="month-head">April 2026</th>
-    </tr>
-    <tr class="mix-r2">
-      <th></th>
-      <th class="sep-l">CARDS</th><th>BETS</th><th class="sep-r">HANDLE</th>
-      <th>CARDS</th><th>BETS</th><th>HANDLE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="td-parlay">Parlays</td>
-      <td class="sep-l">45%</td><td>63%</td><td class="sep-r">60%</td>
-      <td>14%</td><td>17%</td><td>19%</td>
-    </tr>
-    <tr>
-      <td class="td-sgp">SGPs</td>
-      <td class="sep-l">55%</td><td>37%</td><td class="sep-r">40%</td>
-      <td>86%</td><td>83%</td><td>81%</td>
-    </tr>
-  </tbody>
-</table>
+<!-- MARCH MADNESS HIGHLIGHT -->
+<div class="mm-block">
+  <div class="mm-block-title">🏀 March Madness Coverage</div>
+  <div class="mm-block-sub">The standout PPM moment of the past two months — strong card coverage, new market experimentation (see "Team to Never Trail" example below), and meaningful gains across every key metric.</div>
+  <div class="mm-stats">
+    <div>
+      <div class="mm-stat-label">Cards Built</div>
+      <div class="mm-stat-val">150</div>
+      <div class="mm-stat-yoy">+78.6% YoY</div>
+    </div>
+    <div>
+      <div class="mm-stat-label">Total Bets</div>
+      <div class="mm-stat-val">693K</div>
+      <div class="mm-stat-yoy">+46.9% YoY</div>
+    </div>
+    <div>
+      <div class="mm-stat-label">Total Handle</div>
+      <div class="mm-stat-val">$5.66M</div>
+      <div class="mm-stat-yoy">+45.2% YoY</div>
+    </div>
+    <div>
+      <div class="mm-stat-label">PPM Bet Mix</div>
+      <div class="mm-stat-val">8.90%</div>
+      <div class="mm-stat-yoy">vs. 5.51% in '25</div>
+    </div>
+  </div>
+</div>
 
 <!-- THREE PILLARS -->
 <div class="pillars-headers">
@@ -567,7 +727,54 @@
 <div class="pillars-grid">
   <div class="pillar p-green">
     <ul>
-      <li><b>March Madness coverage</b> drove strong PPM performance — 150 cards built (vs. 84 in '25, +78.6% YoY), generating 693K bets and $5.66M handle (+46.9% and +45.2% YoY); PPM bet mix rose to 8.90% of SBK (vs. 5.51% in '25); the tournament also served as a testing ground for new markets, with Team to Never Trail gaining popularity in parlays</li>
+      <li>
+        <b>Parlay vs. SGP Mix</b> — March Madness drove a parlay-heavy March; April flipped heavily SGP-dominant with NBA Playoffs and MLB return
+        <div class="mix-card">
+          <div class="mix-card-inner">
+            <div class="mix-card-half">
+              <div class="mix-card-month-label">March 2026</div>
+              <div class="mix-card-cols">
+                <div>
+                  <div class="mix-card-col-label">Cards</div>
+                  <div class="mix-card-row"><div class="mix-card-row-label parlay">Parlays</div><div class="mix-card-val">45%</div></div>
+                  <div class="mix-card-row"><div class="mix-card-row-label sgp">SGPs</div><div class="mix-card-val">55%</div></div>
+                </div>
+                <div>
+                  <div class="mix-card-col-label">Bets</div>
+                  <div class="mix-card-row"><div class="mix-card-row-label parlay">Parlays</div><div class="mix-card-val">63%</div></div>
+                  <div class="mix-card-row"><div class="mix-card-row-label sgp">SGPs</div><div class="mix-card-val">37%</div></div>
+                </div>
+                <div>
+                  <div class="mix-card-col-label">Handle</div>
+                  <div class="mix-card-row"><div class="mix-card-row-label parlay">Parlays</div><div class="mix-card-val">60%</div></div>
+                  <div class="mix-card-row"><div class="mix-card-row-label sgp">SGPs</div><div class="mix-card-val">40%</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="mix-card-sep"></div>
+            <div class="mix-card-half">
+              <div class="mix-card-month-label">April 2026</div>
+              <div class="mix-card-cols">
+                <div>
+                  <div class="mix-card-col-label">Cards</div>
+                  <div class="mix-card-row"><div class="mix-card-row-label parlay">Parlays</div><div class="mix-card-val">14%</div></div>
+                  <div class="mix-card-row"><div class="mix-card-row-label sgp">SGPs</div><div class="mix-card-val">86%</div></div>
+                </div>
+                <div>
+                  <div class="mix-card-col-label">Bets</div>
+                  <div class="mix-card-row"><div class="mix-card-row-label parlay">Parlays</div><div class="mix-card-val">17%</div></div>
+                  <div class="mix-card-row"><div class="mix-card-row-label sgp">SGPs</div><div class="mix-card-val">83%</div></div>
+                </div>
+                <div>
+                  <div class="mix-card-col-label">Handle</div>
+                  <div class="mix-card-row"><div class="mix-card-row-label parlay">Parlays</div><div class="mix-card-val">19%</div></div>
+                  <div class="mix-card-row"><div class="mix-card-row-label sgp">SGPs</div><div class="mix-card-val">81%</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
       <li><b>Arkansas launch</b> — AR ranked 13th by PPM bets despite being 21st by overall SBK volume, continuing the trend of increased module adoption from new states and by new customers</li>
       <li>
         <b>Push notifications</b> — solid NBA Playoffs SGP engagement in the first round, aided by our introduction of PPM push notifications in late April
@@ -577,10 +784,10 @@
   </div>
   <div class="pillar p-orange">
     <ul>
-      <li><b>March Madness drove parlay-heavy mix</b> — tournament shifted March composition toward parlays and away from SGPs</li>
+      <li><b>Cody Brown (@CodyBrownBets)</b> drove 54.3% of all partner bets and 56.3% of all partner handle over Mar–Apr, making him by far the dominant partner contributor. He regularly posts picks outside current module parameters (leg count, odds range), so easing restrictions is both a growth lever and a way to better feature his most popular content</li>
+      <li><b>MLB season launch</b> was supported by new partnerships with YES Network, NESN, MLB Network, and former Major Leaguer Anthony Rizzo — these broadcast integrations represent an opportunity to drive module awareness through regional fan bases and player audiences</li>
       <li><b>Module conversion dip in April</b> is one we're monitoring closely. Two notable headwinds: (1) Masters coverage was limited to mostly overnight windows, as all module-eligible markets went in-play once the first group teed off each day; (2) Lower relevance MLB futures cards appeared in the front of the recommender tab for a prolonged stretch due to a blacklist gap — fix in progress</li>
       <li><b>YoY comparisons tricky</b> — module was not visible to 100% of customers during H2.0 rollout last year, making Q1–Q3 2025 data an inconsistent baseline</li>
-      <li><b>MLB season launch</b> was supported by new partnerships with YES Network, NESN, MLB Network, and former Major Leaguer Anthony Rizzo — these broadcast integrations represent a scalable model for driving module awareness through regional fan bases and star-player audiences</li>
     </ul>
   </div>
   <div class="pillar p-blue">
@@ -590,6 +797,7 @@
       <li><b>SGP+ rollout</b> — internal testing kicked off in April; continuing to resolve issues (image display, FF conflicts, leg rendering) ahead of release</li>
       <li><b>MLB futures blacklist fix</b> — resolve stale/repetitive futures cards appearing in MLB recommender tab; fix in progress with engineering</li>
       <li><b>Automation exploration</b> — actively identifying opportunities to improve operational efficiency, including card creation and data reporting workflows</li>
+      <li><b>Leg description truncation</b> — investigating UX improvements to ensure customers can more easily read all legs on a card without text getting cut off</li>
     </ul>
   </div>
 </div>
@@ -607,7 +815,7 @@
 <!-- FOOTER -->
 <div class="page-footer">
   <span>Popular Parlay Module · Merch Ops</span>
-  <span>Generated May 4, 2026</span>
+  <span>Generated May 5, 2026</span>
 </div>
 
 </body>
